@@ -1,0 +1,50 @@
+{% extends 'partial/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5 pt-3 justify-content-center">
+        <div class="col-md-5 my-4">
+            <div class="card my-3 shadow">
+                <div class='p-3 mr-3'>
+                    <!-- <img class="card-img-top" src="{% static  'images/Employee.png' %}" alt="Trustlink Ventures Logo"> -->
+                    <h3>Login Page</h3>
+                </div>
+
+                <hr>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <!-- <h2>Login Page</h2>
+                        <hr> -->
+
+                        <div class="form-group">
+                            <label for="" class="">Username</label>
+                            <input type="text" class="form-control" name='username'>
+                        </div>
+                        <div class="form-outline w-70 mb-4">
+                            <label class="form-label" for="textAreaExample2">Password</label>
+                            <input type="password" class="form-control" name="password">
+
+                        </div>
+                        <input class="btn btn-primary custom-btn btn-block" type="submit" value="Login">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

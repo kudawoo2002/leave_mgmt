@@ -1,0 +1,25 @@
+{% extends 'partial/base.html' %}
+{% block title %}Delete Page{% endblock title%}
+{% block content %}
+<br> <br>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="border bg-white p-3">
+                <h3>Delete Item </h3>
+                <hr>
+                <div class="">
+                    <h4>Are you sure you want to delete <strong class=" text-danger">{{ emp_del.first_name }}
+                            {{ emp_del.last_name }}</strong>
+                        employee information?</h4>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <a href="{% url 'employee-report' %}" class="btn btn-secondary">No</a>
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,103 @@
+{% extends 'partial/base.html' %}
+{% load static %}
+
+{% block title%} Gender List Page| Home {% endblock title %}
+
+{% block content %}
+<br>
+<div class="container">
+
+    <div class="row mt-3 pt-3  justify-content-center">
+        <div class="container mt-5 text-center">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="mb-3 ">
+                <h2>Gender Report</h2>
+                <hr>
+                <div class="form-group">
+                    <div class="row justify-content-end">
+
+                        <div class="col-md-4">
+                            <form class="form-inline my-2 my-lg-0" action="" method="">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                    aria-label="Search" name="search" autocomplete="off">
+                                <button class="btn btn-outline-info custom-btn my-2 my-sm-0 text-white"
+                                    type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <table class="table table-hover shadow">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Gender Name</th>
+                                <th scope="col">Created Date</th>
+                                <th scope="col">Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in genders %}
+                            <tr>
+                                <th scope="row">{{ item.pk }}</th>
+                                <td>{{ item.gender }}</td>
+                                <td>{{ item.created_date }}</td>
+                                <td><a href="{% url 'gender-detail' item.pk %}"><i class="fa fa-eye"
+                                            style="font-size:24px; color:brown;">
+                                        </i></a> | <a href="{% url 'create-gender' %}"><i class="fa fa-pencil"
+                                            style="font-size:24px; color:info;">
+                                        </i></a> | <a href="{% url 'gender-edit' item.pk %}"><i class="fa fa-edit"
+                                            style="font-size:24px; color:green;"> </i></a> | <a
+                                        href="{% url 'gender-delete' item.pk %}"><i class="fa fa-trash"
+                                            style="font-size:24px; color:red;"></i></a> | <a
+                                        href="{% url 'dashboard' %}"><i class="fa fa-arrow-circle-left"
+                                            style="font-size:24px; color:black;"></td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row justify-content-end">
+            <nav aria-label="Page navigation example">
+
+                <ul class="pagination shadow">
+                    {% if reports.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{reports.previous_page_number}}">&laquo</a>
+                    </li>
+                    {% endif %}
+
+                    {% for i in reports.paginator.page_range %}
+                    {% if reports.number == i %}
+                    <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                    {% else %}
+
+                    <li class="page-info"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if reports.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{reports.next_page_number}}">&raquo</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{reports.paginator.num_pages}}">Last
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div> -->
+
+    </div>
+    {% endblock content %}

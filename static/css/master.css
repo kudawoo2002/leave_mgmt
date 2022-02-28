@@ -1,0 +1,30 @@
+/* body{
+    background: rgb(230, 227, 227);
+}
+
+.my-card:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+} */
+
+.navbar_custom {
+    background-color:#3264a8;
+}
+
+.btn-primary.custom-btn {
+	background-color: #3264a8;
+	border-color: #3264a8;
+}
+
+.btn-outline-info.custom-btn {
+	background-color: #3264a8;
+	border-color: #3264a8;
+}
+
+.alert-success.custom-btn {
+	background-color: #3264a8;
+	border-color: #3264a8;
+}
+
+.bg {
+    background-color:#3264a8;

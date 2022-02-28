@@ -1,0 +1,39 @@
+{% extends 'partial/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5 pt-3 justify-content-center">
+        <div class="col-md-5 my-4">
+            <div class="card my-3 shadow">
+                <div class='p-3 mr-3'>
+                    <!-- <img class="card-img-top" src="{% static  'images/Employee.png' %}" alt="Trustlink Ventures Logo"> -->
+                    <h3>Login Page</h3>
+                </div>
+
+                <hr>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="card-body">
+                    <div>
+                        <h4>You have logout </h4>
+                    </div>
+
+                    <a href="{% url 'index' %}">Login</a>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

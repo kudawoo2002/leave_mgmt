@@ -1,0 +1,90 @@
+{% extends 'partial/base.html' %}
+{% load static %}
+
+{% block title%}New Leave Type Page | Home {% endblock title %}
+
+{% block content %}
+<!-- <style>
+    body {
+        background-color: #D4E9F7;
+
+
+    }
+
+    .navbar {
+        background-color: #F7FAFD;
+    }
+
+</style> -->
+<div class="container">
+    <div class="row mt-5 pt-3 justify-content-center">
+        <div class="col-md-10">
+            <div class="container mt-5 text-center">
+                <h2>Leave Type Form</h2>
+                <hr>
+                <p class="text-right">New Leave Type form....</p>
+
+            </div>
+            <div class="card my-4 shadow">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="row mt-3">
+
+                            <div class="col-sm-6">
+                                <div class="form-outline">
+                                    <label for="fmane" class="form-label">Leave Type</label>
+                                    <input type="text" placeholder="Enter the type of leave.." class="form-control"
+                                        id="fname" name="leavetype" required value="">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row my-5">
+                            <div class="d-grid gap-2 col-5 mx-auto">
+                                <button type="submit" class="btn btn-primary custom-btn ">Submit</button>
+                            </div>
+
+                            <div class="d-grid gap-2 col-5 mx-auto">
+                                <a href="{% url 'leave-type-report' %}" class="btn btn-primary custom-btn">
+                                    Back</a>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-md-8">
+            {% for item in data %}
+            <div class="card shadow my-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="" alt="IMG">
+                        </div>
+                        <div class="col-md-8">
+
+                            <small>{{ item.created_date }}</small>
+                            <hr>
+                            <a class="h3" href="">{{ item.product_name }}</a>
+                            <p class="text-justify my-3">
+                                {{ item.message }}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div> -->
+
+
+
+
+    </div>
+</div>
+{% endblock content %}

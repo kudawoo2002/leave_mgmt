@@ -1,0 +1,93 @@
+{% extends 'partial/base.html' %}
+{% block title%} Leave Detail Page| Home {% endblock title %}
+{% block content %}
+
+<br> <br>
+<!--Table-->
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg text-white">
+                    Profile Page
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span class="h4"> Leave Information</span> <a
+                                class="btn btn-primary custom-btn btn-sm float-auto"
+                                href="{% url 'leave-edit' leave_detail.pk %}">Edit</a> <a
+                                class="btn btn-primary custom-btn btn-sm float-auto"
+                                href="{% url 'leave-report' %}">Back</a>
+                            <hr>
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Username</th>
+                                        <td>{{ leave_detail.username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Full Name</th>
+                                        <td>{{ leave_detail.full_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Start Date</th>
+                                        <td>{{ leave_detail.start_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">End Date</th>
+                                        <td>{{ leave_detail.end_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total Leave</th>
+                                        <td>{{ leave_detail.annual_total_leave }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Number of Days</th>
+                                        <td>{{ leave_detail.numberof_days }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Leave Bal.</th>
+                                        <td>{{ leave_detail.leave_balance }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Leave Type</th>
+                                        <td>{{ leave_detail.leavetype.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Reason</th>
+                                        <td>{{ leave_detail.leave_comment }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Status</th>
+                                        <td>{{ leave_detail.leave_status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Applied Date</th>
+                                        <td>{{ leave_detail.applied_date  }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-md-4">
+                            <img class="img-thumbnail" src="./media/profile-img1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--End Table-->
+
+
+{% endblock %}

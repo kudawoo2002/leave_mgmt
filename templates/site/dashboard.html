@@ -1,0 +1,205 @@
+{% extends 'partial/base.html' %}
+{% load static %}
+
+{% block title%} Dashboard | Home {% endblock title %}
+
+{% block content %}
+<!-- <style>
+    body {
+        background-color: #D4E9F7;
+
+
+    }
+
+    .navbar {
+        background-color: #F7FAFD;
+    }
+
+</style> -->
+<br><br><br> <br> <br>
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="row text-center">
+        {% if user.is_superuser and user.is_staff %}
+        <div class="col-sm-3">
+            <div class="card mp-3">
+                <div class="card-body shadow text-center">
+                    <h5 class="card-title"><i class="fas fa-paper-plane"></i> Pending Leave</h5>
+                    {% if leave_pending %}
+                    <p class="card-text"><a class="text-info" href="{% url 'leave-pending-report' %}">{{ leave_pending }}</a></p>
+                    {% else %}
+                    <p class="card-text"><a class="text-info" href="{% url 'leave-pending-report' %}">0</a></p>
+                    {% endif %}
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mp-3">
+                <div class="card-body shadow text-center">
+                    <h5 class="card-title"><i class="fas fa-paper-plane"></i> Total Employee</h5>
+                    {% if count_emp %}
+                    <p class="card-text"><a class="text-info" href="{% url 'employee-report' %}">{{ count_emp }}</a></p>
+                    {% else %}
+                    <p class="card-text"><a class="text-info" href="{% url 'employee-report' %}">0</a></p>
+                    {% endif %}
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+            </div>
+        </div>
+        {% comment %} <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body shadow text-center">
+                    <h5 class="card-title"><i class="fas fa-envelope"></i> Phone Numbers</h5>
+                    <p class="card-text"><a class="text-info" href="#">{{ customer_num }}</a></p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+            </div>
+        </div> {% endcomment %}
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body shadow text-center">
+
+                    <h5 class="card-title"><i class="fas fa-users"></i> Leave balance</h5>
+                    {% if leave_bal %}
+                    <p class="card-text"><a class="text-info" href="{% url 'leave-report' %}">{{ leave_bal.leave_balance }}</a>
+                        {% else %}
+                        <p class="card-text"><a class="text-info" href="">0</a>
+
+                        </p>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+
+        <div class="col-sm-3 ">
+            <div class="card">
+                <div class="card-body shadow">
+
+                    <h5 class="card-title"><i class="fas fa-users"></i> Leave balance</h5>
+                    {% if leave_bal %}
+                    <p class="card-text"><a class="text-info" href="{% url 'leave-report' %}">{{ leave_bal.leave_balance }}</a>
+                        {% else %}
+                        <p class="card-text"><a class="text-info" href="">0</a>
+
+                        </p>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+
+    
+    {% endif %}
+    </div>
+    
+</div>
+
+
+</div>
+
+</div>
+</div>
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-6">
+            <div class="bg-white">
+                <canvas id="myChart" width="400" height="400"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            datasets: [{
+                                label: '# SMS GRAPH',
+                                data: [12, 19, 3, 5, 2, 3],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+
+                </script>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="bg-white">
+                <canvas id="myChart1" width="400" height="300"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart1').getContext('2d');
+                    var myChart1 = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            datasets: [{
+                                label: 'Products',
+                                data: [12, 19, 3, 5, 2, 3],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+
+                </script>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}

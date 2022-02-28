@@ -1,0 +1,149 @@
+{% load static %}
+<!-- NAVBAR COLOR =#3264a8 -->
+<nav class="navbar navbar-expand-lg  navbar_custom fixed-top" style=>
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a class="navbar-brand text-white" href="">
+                <img src="" height="50" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+
+            {% if request.user.is_authenticated %}
+            {% if user.is_superuser and user.is_staff %}
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active ">
+                    <a class="nav-link text-white" href="{% url 'dashboard' %}">DASHBOARD <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        EMPLOYEE
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'create-department' %}">DEPARTMENT</a>
+                        <a class="dropdown-item" href="{% url 'department-report' %}">DEPARTMENT REPORT</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'create-gender' %}">GENDER</a>
+                        <a class="dropdown-item" href="{% url 'gender-report' %}">GENDER REPORT</a>
+                        <!-- <a class="dropdown-item" href="#">Another action</a> -->
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'employee' %}">NEW EMPLOYEE</a>
+                        <a class="dropdown-item" href="{% url 'employee-report' %}">EMPLOYEE REPORT</a>
+                    </div>
+                </li>
+
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        LEAVE
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'leave-type' %}">LEAVE TYPE</a>
+                        <a class="dropdown-item" href="{% url 'leave-type-report' %}">LEAVE TYPE REPORT</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'leave-request' %}">LEAVE REQUEST</a>
+                        <a class="dropdown-item" href="{% url 'leave-pending-report' %}">LEAVE PENDING REQUEST</a>
+                        <a class="dropdown-item" href="{% url 'leave-report' %}">LEAVE REPORT</a>
+
+                        <!-- <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="">CUSTOMER LIST</a> -->
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="">Welcome <strong>{{ user.username}}</strong></a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="{% url 'logout-page' %}">LOGOUT</a>
+                </li>
+            </ul>
+        </div>
+        {% else %}
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active ">
+                <a class="nav-link text-white" href="{% url 'dashboard' %}">DASHBOARD <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    EMPLOYEE
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% comment %} <a class="dropdown-item" href="{% url 'create-department' %}">DEPARTMENT</a>
+                    <a class="dropdown-item" href="{% url 'department-report' %}">DEPARTMENT REPORT</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'create-gender' %}">GENDER</a>
+                    <a class="dropdown-item" href="{% url 'gender-report' %}">GENDER REPORT</a>
+                    <!-- <a class="dropdown-item" href="#">Another action</a> -->
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'employee' %}">NEW EMPLOYEE</a> {% endcomment %}
+                    <a class="dropdown-item" href="{% url 'employee-report' %}">EMPLOYEE REPORT</a>
+                </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    LEAVE
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% comment %} <a class="dropdown-item" href="{% url 'leave-type' %}">LEAVE TYPE</a>
+                    <a class="dropdown-item" href="{% url 'leave-type-report' %}">LEAVE TYPE REPORT</a>
+                    <div class="dropdown-divider"></div> {% endcomment %}
+                    <a class="dropdown-item" href="{% url 'leave-request' %}">LEAVE REQUEST</a>
+                    <a class="dropdown-item" href="{% url 'leave-report' %}">LEAVE REPORT</a>
+
+                    <!-- <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="">CUSTOMER LIST</a> -->
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+                <a class="nav-link text-white" href="">Welcome <strong>{{ user.username}}</strong></a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link text-white" href="{% url 'logout-page' %}">LOGOUT</a>
+            </li>
+        </ul>
+    </div>
+        
+        {% endif %}
+        {% else %}
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active ">
+                <a class="nav-link text-white" href="">LOGO <span class="sr-only">(current)</span></a>
+            </li>
+
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+                <a class="nav-link text-white" href="">LOGIN</a>
+            </li>
+        </ul>
+
+        {% endif %}
+
+
+
+    </div>
+</nav>

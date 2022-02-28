@@ -1,0 +1,54 @@
+{% extends 'partial/base.html' %}
+
+{% block content %}
+
+<br> <br>
+<!--Table-->
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg text-white">
+                    Gender Page
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span class="h4"> Gender Information</span> <a
+                                class="btn btn-primary custom-btn btn-sm float-auto"
+                                href="{% url 'gender-edit' gender_detail.pk %}">Edit</a> <a
+                                class="btn btn-primary custom-btn btn-sm float-auto"
+                                href="{% url 'gender-report' %}">Back</a>
+
+                            <hr>
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Gender Name</th>
+                                        <td>{{ gender_detail.gender }}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-md-4">
+                            <img class="img-thumbnail" src="./media/profile-img1.jpg" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--End Table-->
+{% endblock %}

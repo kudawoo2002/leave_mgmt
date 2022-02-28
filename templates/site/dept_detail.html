@@ -1,0 +1,56 @@
+{% extends 'partial/base.html' %}
+
+{% block title%} Department Detail | Home {% endblock title %}
+
+{% block content %}
+
+<br> <br>
+<!--Table-->
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg text-white">
+                    Department Page
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span class="h4"> Department Information</span> <a
+                                class="btn btn-primary custom-btn btn-sm float-auto"
+                                href="{% url 'department-edit' dept_detail.pk %}">Edit</a> <a
+                                class="btn btn-primary custom-btn btn-sm float-auto"
+                                href="{% url 'department-report' %}">Back</a>
+
+                            <hr>
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Department Name</th>
+                                        <td>{{ dept_detail.dept_name }}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-md-4">
+                            <img class="img-thumbnail" src="./media/profile-img1.jpg" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--End Table-->
+{% endblock %}

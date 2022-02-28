@@ -1,0 +1,187 @@
+{% extends 'partial/base.html' %} {% load static %} {% block title%} Request
+Leave | Home {% endblock title %} {% block content %}
+
+<div class="container">
+  <div class="row mt-3 pt-3 justify-content-center">
+    <div class="col-md-8">
+      <div class="container mt-5 text-center">
+        <h2>Request Leave</h2>
+        <hr />
+        <p class="text-right">Fill Leave Form</p>
+      </div>
+      <div class="card my-4 shadow">
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="fmane" class="form-label">Username</label>
+                <input
+                  type="text"
+                  placeholder="Start Date"
+                  class="form-control"
+                  id="start_date"
+                  value="{{leave_edit.username.pk}}"
+                  name="username"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="start_date" class="form-label"
+                  >Emp. Full Name</label
+                >
+                <input
+                  type="text"
+                  placeholder="Start Date"
+                  class="form-control"
+                  id="start_date"
+                  value="{{ leave_edit.full_name }}"
+                  name="full_name"
+                />
+                <!-- <span style="color:gray;">leave start date is on...</span> -->
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="start_date" class="form-label">Start Date</label>
+                <input
+                  type="date"
+                  placeholder="Start Date"
+                  class="form-control"
+                  id="start_date"
+                  name="start_date"
+                  value="{{ leave_edit.start_date | date:'Y-m-d'}}"
+                />
+                <span style="color: gray">leave start date is on...</span>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="end_date" class="form-label">End Date</label>
+                <input
+                  type="date"
+                  placeholder="End Date"
+                  class="form-control"
+                  id="end_date"
+                  name="end_date"
+                  value="{{ leave_edit.end_date | date:'Y-m-d'}}"
+                />
+                <span style="color: gray">coming back on...</span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="end_date" class="form-label">Number of Days</label>
+                <input
+                  type="number"
+                  placeholder="End Date"
+                  class="form-control"
+                  id="end_date"
+                  name="n_of_day"
+                  value="{{ leave_edit.numberof_days }}"
+                />
+                <span style="color: gray"
+                  >Number of day exclude weekend and holiday</span
+                >
+              </div>
+              <!-- <div class="col-md-6 form-group">
+                                <label for="days" class="form-label">Numer of holidays</label>
+                                <input type="number" placeholder="" class="form-control" id="days">
+                                <span style="color:gray;">Indicate number of holiday and weekend between your leave
+                                    periode..</span>
+                            </div> -->
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="leave_type" class="form-label">Leave Type:</label>
+                <select name="leavetype" id="" class="form-control">
+                  <option value="{{ leave_edit.leavetype.pk }}">
+                    {{ leave_edit.leavetype }}
+                  </option>
+                  {% for item in leave_type %}
+                  <option value="{{ item.pk }}">{{ item.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="col-md-6 form-group">
+                <label for="status" class="form-label"
+                  >Total Annual Leave</label
+                >
+                {% if leave_edit.leave_balance == 0 %}
+                <input
+                  type="number"
+                  placeholder=""
+                  class="form-control"
+                  id="days"
+                  value="20"
+                  name="annual_leave"
+                />
+                {% else %}
+                <input
+                  type="number"
+                  placeholder=""
+                  class="form-control"
+                  id="days"
+                  value="20"
+                  name="annual_leave"
+                  value="{{ leave_edit.leave_balance }}"
+                />
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="comment" class="form-label">Reason:</label>
+                <!-- <textarea name="reason" id="" cols="30" rows="10" class='form-control'
+                                    value="{{leave_edit.leave_comment }}"></textarea> -->
+                <textarea
+                  name="reason"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  class="form-control"
+                  value="{{ leave_edit.leave_comment }}"
+                >
+{{ leave_edit.leave_comment }}</textarea
+                >
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="status" class="form-label">Status:</label>
+                <select name="leavestatus" id="" class="form-control">
+                  <option value="{{ leave_edit.leave_status.pk }}">
+                    {{ leave_edit.leave_status }}
+                  </option>
+                  {% for item in leave_status %}
+                  <option value="{{ item.pk }}">{{ item.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input
+                    class="btn btn-primary custom-btn btn-block"
+                    type="submit"
+                    value="Submit"
+                  />
+                </div>
+                <div class="col-md-6 form-group">
+                  <a
+                    class="btn btn-primary custom-btn btn-block"
+                    href="{% url 'leave-report' %}"
+                    >Back</a
+                  >
+                  <!-- <input class="btn btn-primary custom-btn btn-block" type="submit" value="Back"> -->
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

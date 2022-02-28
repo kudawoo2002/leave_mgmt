@@ -1,0 +1,112 @@
+{% extends 'partial/base.html' %}
+
+{% block title%} Employee Detail Page| Home {% endblock title %}
+{% block content %}
+<br> <br>
+<!--Table-->
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg text-white">
+                    Employee Detail Page
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span class="h4"> Employee Information</span> <a
+                                class="btn btn-primary custom-btn btn-sm float-auto"
+                                href="{% url 'employee-edit' emp_detail.pk %}">Edit</a> <a
+                                class="btn btn-primary custom-btn btn-sm float-auto"
+                                href="{% url 'employee-report' %}">Back</a>
+                            <hr>
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                    {% if emp_detail %}
+                                    <tr>
+                                        <th scope="row">Username</th>
+                                        <td>{{ emp_detail.username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">first Name</th>
+                                        <td>{{ emp_detail.first_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Last Name</th>
+                                        <td>{{ emp_detail.last_name }}</td>
+                                    </tr>
+                                    {% if emp_detail.middle_name%}
+                                    <tr>
+                                        <th scope="row">Middle Name</th>
+                                        <td>{{ emp_detail.middle_name}}</td>
+                                    </tr>
+                                    {% endif %}
+                                    <tr>
+                                        <th scope="row">Date of Birth</th>
+                                        <td>{{ emp_detail.dob }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Employee Code</th>
+                                        <td>{{ emp_detail.emp_code }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Gender</th>
+                                        <td>{{ emp_detail.emp_gender }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Address</th>
+                                        <td>{{ emp_detail.emp_address }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">City</th>
+                                        <td>{{ emp_detail.city }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Phone Number</th>
+                                        <td>{{ emp_detail.emp_phone }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email address</th>
+                                        <td>{{ emp_detail.email_address }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Nationality</th>
+                                        <td>{{ emp_detail.emp_nationality }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Department</th>
+                                        <td>{{ emp_detail.dept_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Employement Date</th>
+                                        <td>{{ emp_detail.started_date }}</td>
+                                    </tr>
+
+                                    {% else %}
+                                    <tr>
+                                        <td>No employee details </td>
+                                    </tr>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-md-4">
+                            {% if emp_detail.emp_picture %}
+                            <img class="img-thumbnail" src="{{ emp_detail.emp_picture.url }}" alt="">
+                            {% else %}
+                            <img class="img-thumbnail" src="" alt="">
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
